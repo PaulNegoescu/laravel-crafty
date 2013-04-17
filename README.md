@@ -15,19 +15,24 @@ I myself am a Windows user and many of the productivity tools you have in a Mac 
 
 1. `git clone` this repo or download all files and folders as a .zip archive and extract it.
 2. Copy the contents to a folder inside your `<laravel_installation>/bundles` directory so that `<laravel_installation>/bundles/routes.php` is accessible.
-3. in `<laravel_installation>\application\bundles.php` edit the array you find there and add this line:
+3. In `<laravel_installation>\application\bundles.php` edit the array you find there and add this line:
 	```'crafty' => array('handles' => 'crafty'),```
-
 
 *Note* - In most cases the array above will already contain other lines take care not to break those, just add the line at the end
 
-**Warning!** Only leave this bundle enabled in a development environment remove it in production! 
+### Important
 
-To remove the bundle just undo the steps above (not necessary for the first step).
+In case you are running on *nix systems (including MacOS) you'll need to make sure your server user has the necessary rights to execute shell commands, this has only been tested and found working on Windows.
+
+### Uninstalling
+
+To remove the bundle just undo the steps 2 and 3 above.
 
 ## Usage
 
 1. Navigate to http://yourlaravelhost.dev/crafty
 2. Use the buttons
 
-*Note* - Generator tasks do not work at the moment.
+*Note* - Generator tasks and migration creation do not work at the moment.
+
+**Warning!** Only leave this bundle enabled in a development environment remove it in production! 
