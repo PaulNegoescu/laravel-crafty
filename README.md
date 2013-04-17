@@ -16,7 +16,6 @@ I myself am a Windows user and many of the productivity tools you have in a Mac 
 1. `git clone` this repo or download all files and folders as a .zip archive and extract it.
 2. Copy the contents to a folder inside your `<laravel_installation>/bundles` directory so that `<laravel_installation>/bundles/routes.php` is accessible.
 3. in `<laravel_installation>\application\bundles.php` edit the array you find there and add this line:
-
 	'crafty' => array('handles' => 'crafty'),
 
 
