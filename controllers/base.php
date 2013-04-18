@@ -14,9 +14,9 @@ class Crafty_Base_Controller extends Base_Controller {
 
 	public function post_index() {
 		$baseCommand  = 'php artisan ';
-		$userCommand  = escapeshellarg(Input::get('submit'));
-		$fullCommand  = $baseCommand.$userCommand;
-		$extraCommand = Input::get(Input::get('submit') . 'Params');
+		$userCommand  = Input::get('submit');
+		$fullCommand  = $baseCommand.escapeshellarg($userCommand);
+		$extraCommand = Input::get($userCommand . 'Params');
 		$prevCommands = Input::get('prevCommands');
 
 		//if an input like migrate:makeParams is set add the params to the command

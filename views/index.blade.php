@@ -44,10 +44,6 @@
 					<input type="text" name="generateParams" id="generateParams" class="span12" placeholder="params" />
 				</div>
 			</div>
-			<div class="input-prepend row-fluid">
-				<button type="submit" name="submit" value="migrate:make" class="btn btn-success">Make</button>
-				<input type="text" name="migrate:makeParams" id="makeParams" placeholder="migration_name" />
-			</div>
 			
 		</fieldset>
 	</form>
