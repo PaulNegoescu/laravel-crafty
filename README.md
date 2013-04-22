@@ -12,8 +12,14 @@ I myself am a Windows user and many of the productivity tools you have in a Mac 
 *A Laravel 4 version will be created in a separate repo.*
 
 ## Installation
+You can install this from the Laravel Bundle Repository by running the following command in your Laravel installation:
+`php artisan bundle:install Crafty`
 
-1. `git clone` this repo or download all files and folders as a .zip archive and extract it.
+*Note* - You still need to follow step 3 below
+
+**or**
+
+1. `git clone` the repo or download all files and folders as a .zip archive and extract it from here: http://github.com/PaulNegoescu/laravel-crafty.
 2. Copy the contents to a folder (I'll name it crafty) inside your `<laravel_installation>/bundles` directory so that `<laravel_installation>/bundles/crafty/routes.php` is accessible.
 3. In `<laravel_installation>\application\bundles.php` edit the array you find there and add this line:
 	`'crafty' => array('handles' => 'crafty'),`
