@@ -15,16 +15,26 @@ class Crafty_Base_Controller extends Base_Controller {
 	public function post_index() {
 		$baseCommand  = 'php artisan ';
 		$userCommand  = Input::get('submit');
+<<<<<<< Updated upstream
 		$fullCommand  = $baseCommand.escapeshellarg($userCommand);
 		$extraCommand = Input::get($userCommand . 'Params');
+=======
+		$fullCommand  = $baseCommand.$userCommand;
+		$extraParams  = Input::get(Input::get('submit') . 'Params');
+		$extraCommand = Input::get(Input::get('submit') . 'Cmd');
+>>>>>>> Stashed changes
 		$prevCommands = Input::get('prevCommands');
 
-		//if an input like migrate:makeParams is set add the params to the command
+		//if we have an extra command (after a colon)
 		if(!empty($extraCommand)) {
-			$fullCommand = $fullCommand . ' ' . escapeshellarg($extraCommand);
+			$fullCommand = $fullCommand . ':' . $extraCommand;
+		}
+		//if an input like migrate:makeParams is set add the params to the command
+		if(!empty($extraParams)) {
+			$fullCommand = $fullCommand . ' ' . $extraParams;
 		}
 
-		$result = trim(shell_exec($fullCommand));
+		$result = trim(shell_exec(escapeshellcmd($fullCommand)));
 
 		if(!$result) {
 			$result = 'Nothing happened!';

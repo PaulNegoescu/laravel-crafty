@@ -16,16 +16,36 @@
 
 			<h3>Migrations</h3>
 
-			<button type="submit" name="submit" value="migrate:install" class="btn btn-info">Install</button>
+			<div class="row-fluid">
+				<button type="submit" name="submit" value="migrate:install" class="btn btn-info">Install</button>
+			</div>
+			<div class="well well-small row-fluid span6">
+				<div class="span6">
+					<label class="radio">
+						<input name="migrateParams" type="radio" value="" checked />
+						Everything
+					</label>
+					<label class="radio">
+						<input name="migrateParams" type="radio" value="application" />
+						Application
+					</label>
+					<label class="radio">
+						<input name="migrateParams" type="radio" value="bundle" />
+						Bundle
+					</label>
+				</div>
+				<div class="span6">
+					<button type="submit" name="submit" value="migrate" class="btn btn-success">Migrate</button>
+				</div>
+			</div>
 			<div class="btn-group row-fluid">
-				<button type="submit" name="submit" value="migrate" class="btn btn-success">Migrate</button>
 				<button type="submit" name="submit" value="migrate:rollback" class="btn btn-warning">Rollback</button>
 				<button type="submit" name="submit" value="migrate:rebuild" class="btn btn-danger">Rebuild</button>
 				<button type="submit" name="submit" value="migrate:reset" class="btn btn-danger">Reset</button>
 			</div>
 			<div class="input-prepend row-fluid">
 				<button type="submit" name="submit" value="migrate:make" class="btn btn-success">Make</button>
-				<input type="text" name="migrate:makeParams" id="makeParams" placeholder="migration_name" />
+				<input type="text" name="migrate:makeParams" id="makeParams" placeholder="Make Parameters" class="span4" />
 			</div>
 			
 		</fieldset>
@@ -33,18 +53,36 @@
 		<fieldset>
 			<legend><h2>Generator</h2></legend>
 			<h3>Resources</h3>
-			<div class="row-fluid">
-				<div class="btn-group span7">
-					<button type="submit" name="submit" value="generate:controller" class="btn btn-success">Controller</button>
-					<button type="submit" name="submit" value="generate:model" class="btn btn-success">Model</button>
-					<button type="submit" name="submit" value="generate:migration" class="btn btn-success">Migration</button>
-					<button type="submit" name="submit" value="generate:view" class="btn btn-success">View</button>
-				</div>
-				<div class="span5">
-					<input type="text" name="generateParams" id="generateParams" class="span12" placeholder="params" />
-				</div>
+			<div class="row-fluid well well-small span6">
+				<label class="radio">
+					<input type="radio" name="generateCmd" value="resource" checked />
+					Resource
+				</label>
+				<label class="radio">
+					<input type="radio" name="generateCmd" value="controller" />
+					Controller
+				</label>
+				<label class="radio">
+					<input type="radio" name="generateCmd" value="model" />
+					Model
+				</label>
+				<label class="radio">
+					<input type="radio" name="generateCmd" value="migration" />
+					Migration
+				</label>
+				<label class="radio">
+					<input type="radio" name="generateCmd" value="view" />
+					View
+				</label>
 			</div>
+<<<<<<< Updated upstream
 			
+=======
+			<div class="input-prepend row-fluid">
+				<button type="submit" name="submit" value="generate" class="btn btn-success">Generate</button>
+				<input type="text" name="generateParams" id="generateParams" class="span4" placeholder="params" />
+			<div>	
+>>>>>>> Stashed changes
 		</fieldset>
 	</form>
 	<div class="results span6">

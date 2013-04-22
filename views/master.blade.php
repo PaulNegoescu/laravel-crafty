@@ -15,7 +15,11 @@
 
 			.btn {
 				margin-bottom: 10px;
-				min-width: 130px;
+				min-width: 143px;
+			}
+
+			.row-fluid[class*=span] {
+				margin-left: 0;
 			}
 		</style>
 	</head>
