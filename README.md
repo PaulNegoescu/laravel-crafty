@@ -27,11 +27,11 @@ To remove the bundle just undo the steps 2 and 3 above.
 ## Usage
 
 1. Navigate to http://yourlaravelhost.dev/crafty
-2. Use the buttons
+2. Use the buttons, should be self explanatory
 
 *More info Soon*
 
-*Note* - Generator tasks do not work at the moment.
+*TODO* - Add hints from the official documentation of the tools.
 
 ### Important
 
