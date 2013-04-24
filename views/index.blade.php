@@ -21,18 +21,12 @@
 			</div>
 			<div class="well well-small row-fluid span6">
 				<div class="span6">
-					<label class="radio">
-						<input name="migrateParams" type="radio" value="" checked />
-						Everything
-					</label>
-					<label class="radio">
-						<input name="migrateParams" type="radio" value="application" />
-						Application
-					</label>
-					<label class="radio">
-						<input name="migrateParams" type="radio" value="bundle" />
-						Bundle
-					</label>
+					@foreach($migrateParams as $param => $values)
+						<label class="radio">
+							{{ Form::radio('migrateParams', (string)$param, $values[1]) }}
+							{{ $values[0] }}
+						</label>
+					@endforeach
 				</div>
 				<div class="span6">
 					<button type="submit" name="submit" value="migrate" class="btn btn-success">Migrate</button>
@@ -45,7 +39,7 @@
 			</div>
 			<div class="input-prepend row-fluid">
 				<button type="submit" name="submit" value="migrate:make" class="btn btn-success">Make</button>
-				<input type="text" name="migrate:makeParams" id="makeParams" placeholder="Make Parameters" class="span4" />
+				{{ Form::text('migrate:makeParams', Input::old('migrate:makeParams'), array('placeholder' => 'Make Parameters')) }}
 			</div>
 			
 		</fieldset>
@@ -54,35 +48,17 @@
 			<legend><h2>Generator</h2></legend>
 			<h3>Resources</h3>
 			<div class="row-fluid well well-small span6">
-				<label class="radio">
-					<input type="radio" name="generateCmd" value="resource" checked />
-					Resource
-				</label>
-				<label class="radio">
-					<input type="radio" name="generateCmd" value="controller" />
-					Controller
-				</label>
-				<label class="radio">
-					<input type="radio" name="generateCmd" value="model" />
-					Model
-				</label>
-				<label class="radio">
-					<input type="radio" name="generateCmd" value="migration" />
-					Migration
-				</label>
-				<label class="radio">
-					<input type="radio" name="generateCmd" value="view" />
-					View
-				</label>
+				@foreach($generateCmd as $cmd => $values)
+					<label class="radio">
+						{{ Form::radio('generateCmd', $cmd, $values[1]) }}
+						{{ $values[0] }}
+					</label>
+				@endforeach
 			</div>
-<<<<<<< Updated upstream
-			
-=======
 			<div class="input-prepend row-fluid">
 				<button type="submit" name="submit" value="generate" class="btn btn-success">Generate</button>
-				<input type="text" name="generateParams" id="generateParams" class="span4" placeholder="params" />
-			<div>	
->>>>>>> Stashed changes
+				{{ Form::text('generateParams', Input::old('generateParams'), array('placeholder' => 'Generate Parameters')) }}
+			<div>
 		</fieldset>
 	</form>
 	<div class="results span6">

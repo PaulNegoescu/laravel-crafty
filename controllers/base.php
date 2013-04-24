@@ -2,12 +2,32 @@
 class Crafty_Base_Controller extends Base_Controller {
 	public $restful = true;
 
-	public function get_index($result = '', array $prevCommands = array())
+	public function get_index()
 	{
+		$migrateParams = array(
+			''            => array('Everything', false),
+			'application' => array('Application', false),
+			'bundle'      => array('Bundle', false)
+		);
+		$migrateParams[Input::old("migrateParams")][1] = true;
+
+		$generateCmd = array(
+			'resource'   => array('Resource', false),
+			'controller' => array('Controller', false),
+			'model'      => array('Model', false),
+			'migration'  => array('Migration', false),
+			'view'       => array('View', false)
+		);
+		$whichCmd = (string)Input::old("generateCmd");
+		empty($whichCmd) ? $whichCmd = 'resource' : '';
+		$generateCmd[$whichCmd][1] = true;
+
 		$view = View::make('crafty::index');
 
-		$view["prevCommands"] = $prevCommands;
-		$view["result"]       = $result;
+		$view['prevCommands']  = (array)Session::get('prevCommands');
+		$view['result']        = (string)Session::get('result');
+		$view['migrateParams'] = $migrateParams;
+		$view['generateCmd']   = $generateCmd;
 
 		return $view;
 	}
@@ -15,14 +35,9 @@ class Crafty_Base_Controller extends Base_Controller {
 	public function post_index() {
 		$baseCommand  = 'php artisan ';
 		$userCommand  = Input::get('submit');
-<<<<<<< Updated upstream
-		$fullCommand  = $baseCommand.escapeshellarg($userCommand);
-		$extraCommand = Input::get($userCommand . 'Params');
-=======
 		$fullCommand  = $baseCommand.$userCommand;
 		$extraParams  = Input::get(Input::get('submit') . 'Params');
 		$extraCommand = Input::get(Input::get('submit') . 'Cmd');
->>>>>>> Stashed changes
 		$prevCommands = Input::get('prevCommands');
 
 		//if we have an extra command (after a colon)
@@ -43,9 +58,9 @@ class Crafty_Base_Controller extends Base_Controller {
 		if(!empty($prevCommands)) {
 			$prevCommands = json_decode(html_entity_decode($prevCommands), true);
 		}
-		$newPrevCommand  = array(array('command' => $fullCommand, 'result' => $result));
-		$prevCommands    = array_merge($prevCommands, $newPrevCommand);
+		$newPrevCommand = array(array('command' => $fullCommand, 'result' => $result));
+		$prevCommands   = array_merge($prevCommands, $newPrevCommand);
 
-		return $this->get_index($result, $prevCommands);
+		return Redirect::to_action('crafty::base@index')->with("prevCommands", $prevCommands)->with("result", $result)->with_input();
 	}
 }
