@@ -12,35 +12,46 @@ I myself am a Windows user and many of the productivity tools you have in a Mac 
 *A Laravel 4 version will be created in a separate repo.*
 
 ## Installation
-You can install this from the Laravel Bundle Repository by running the following command in your Laravel installation:
-`php artisan bundle:install Crafty`
 
-*Note* - You still need to follow step 3 below
+### From the Laravel Bundle Repository
+1. Run the following command in your Laravel installation:
+	`php artisan bundle:install Crafty`
+2. Follow step 3 below
 
 **or**
 
+### From Github
+
 1. `git clone` the repo or download all files and folders as a .zip archive and extract it from here: http://github.com/PaulNegoescu/laravel-crafty.
-2. Copy the contents to a folder (I'll name it crafty) inside your `<laravel_installation>/bundles` directory so that `<laravel_installation>/bundles/crafty/routes.php` is accessible.
+2. Copy the contents to a folder (name it laravel-crafty) inside your `<laravel_installation>/bundles` directory so that `<laravel_installation>/bundles/laravel-crafty/routes.php` is accessible.
 3. In `<laravel_installation>\application\bundles.php` edit the array you find there and add this line:
-	`'crafty' => array('handles' => 'crafty'),`
+	`'laravel-crafty' => array('handles' => 'crafty'),`
 
 *Note* - In most cases the array above will already contain other lines take care not to break those, just add the line at the end
 
+*Note 2* - The bundle does **not** need to be published, all resources are external or in-line (this is the reason for the bad practice styles and scripts :) ).
+
+*Note 3* - If the GUI fails for any reason please see the **Important** info at the end.
+
 ### Uninstalling
 
-To remove the bundle just undo the steps 2 and 3 above.
+To remove the bundle just undo the steps 2 and 3 above (delete the bundle (/laravel-crafty) folder and remove the line from bundles.php).
+
+*See the warning below.*
 
 ## Usage
 
 1. Navigate to http://yourlaravelhost.dev/crafty
-2. Use the buttons, should be self explanatory
+2. Use the buttons, should be self-explanatory
 
 *More info Soon*
 
 *TODO* - Add hints from the official documentation of the tools.
 
-### Important
+## Important
 
-In case you are running on *nix systems (including MacOS) you'll need to make sure your server user has the necessary rights to execute shell commands, this has only been tested and found working on Windows.
+In case you are running on *nix systems (including MacOS) you'll need to make sure your webserver user has the necessary rights to execute shell commands, this is working by default on Windows.
+
+If the GUI still won't execute the command line commands please make sure that in your php.ini file "safe_mode" is set to false.
 
 **Warning!** Only leave this bundle enabled in a development environment remove it in production! 

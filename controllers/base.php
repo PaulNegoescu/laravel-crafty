@@ -1,5 +1,5 @@
 <?php 
-class Crafty_Base_Controller extends Base_Controller {
+class Laravel_Crafty_Base_Controller extends Base_Controller {
 	public $restful = true;
 
 	public function get_index()
@@ -22,7 +22,7 @@ class Crafty_Base_Controller extends Base_Controller {
 		empty($whichCmd) ? $whichCmd = 'resource' : '';
 		$generateCmd[$whichCmd][1] = true;
 
-		$view = View::make('crafty::index');
+		$view = View::make('laravel-crafty::index');
 
 		$view['prevCommands']  = (array)Session::get('prevCommands');
 		$view['result']        = (string)Session::get('result');
@@ -61,6 +61,6 @@ class Crafty_Base_Controller extends Base_Controller {
 		$newPrevCommand = array(array('command' => $fullCommand, 'result' => $result));
 		$prevCommands   = array_merge($prevCommands, $newPrevCommand);
 
-		return Redirect::to_action('crafty::base@index')->with("prevCommands", $prevCommands)->with("result", $result)->with_input();
+		return Redirect::to_action('laravel-crafty::base@index')->with("prevCommands", $prevCommands)->with("result", $result)->with_input();
 	}
 }

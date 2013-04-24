@@ -1,4 +1,4 @@
-@layout('crafty::master')
+@layout('laravel-crafty::master')
 
 @section('content')
 	<form action="" method="post" class="span6">
