@@ -4,6 +4,10 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 
 	public function get_index()
 	{
+		/**
+		 * This holds all possible migrate parameters
+		 * @var array
+		 */
 		$migrateParams = array(
 			''            => array('Everything', false),
 			'application' => array('Application', false),
@@ -11,6 +15,10 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 		);
 		$migrateParams[Input::old("migrateParams")][1] = true;
 
+		/**
+		 * This holds all generate task related commands
+		 * @var array
+		 */
 		$generateCmd = array(
 			'resource'   => array('Resource', false),
 			'controller' => array('Controller', false),
@@ -22,6 +30,19 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 		empty($whichCmd) ? $whichCmd = 'resource' : '';
 		$generateCmd[$whichCmd][1] = true;
 
+		/**
+		 * This holds all bundle related commands
+		 * @var array
+		 */
+		$bundleCmd = array(
+			'install'   => array('Install', false),
+			'upgrade'   => array('Upgrade', false),
+			'publish'   => array('Publish', false),
+		);
+		$whichCmd = (string)Input::old("bundleCmd");
+		empty($whichCmd) ? $whichCmd = 'install' : '';
+		$bundleCmd[$whichCmd][1] = true;
+
 		$view = View::make('laravel-crafty::index');
 
 		$view['prevCommands']  = (array)Session::get('prevCommands');
@@ -31,6 +52,7 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 		}
 		$view['migrateParams'] = $migrateParams;
 		$view['generateCmd']   = $generateCmd;
+		$view['bundleCmd']	   = $bundleCmd;
 
 		return $view;
 	}
