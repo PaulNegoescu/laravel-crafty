@@ -57,6 +57,13 @@
 				<button type="submit" name="submit" value="bundle" class="btn btn-success">Bundle</button>
 				{{ Form::text('bundleParams', Input::old('bundleParams'), array('placeholder' => 'Bundle Name')) }}
 			<div>
+
+			<h3>Unit Tests</h3>
+
+			<div class="input-prepend row-fluid">
+				<button type="submit" name="submit" value="test" class="btn btn-success">Test</button>
+				{{ Form::text('testParams', Input::old('testParams'), array('placeholder' => 'Bundle Name')) }}
+			<div>
 			
 		</fieldset>
 
