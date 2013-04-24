@@ -26,6 +26,9 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 
 		$view['prevCommands']  = (array)Session::get('prevCommands');
 		$view['result']        = (string)Session::get('result');
+		if (function_exists('gzuncompress') && strlen($view['result']) > 0) {
+			$view['result']    = gzuncompress($view['result']);
+		}
 		$view['migrateParams'] = $migrateParams;
 		$view['generateCmd']   = $generateCmd;
 
@@ -58,8 +61,11 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 		if(!empty($prevCommands)) {
 			$prevCommands = json_decode(html_entity_decode($prevCommands), true);
 		}
-		$newPrevCommand = array(array('command' => $fullCommand, 'result' => $result));
-		$prevCommands   = array_merge($prevCommands, $newPrevCommand);
+		$prevCommands[] = $fullCommand;
+
+		if(function_exists('gzcompress')) {
+			$result = gzcompress($result);
+		}
 
 		return Redirect::to_action('laravel-crafty::base@index')->with("prevCommands", $prevCommands)->with("result", $result)->with_input();
 	}

@@ -63,12 +63,11 @@
 	</form>
 	<div class="results span6">
 		@foreach ($prevCommands as $command)
-			<div class="command">{{ $command['command'] }}</div>
-			<div class="result hide">{{ $command['result'] }}</div>
+			<div class="command">{{ $command }}</div>
 		@endforeach
 
 		@if (!empty($result))
-			<pre> {{ $result }} </pre>
+			<pre>{{ $result }}</pre>
 		@else
 			Waiting for commands!
 		@endif
