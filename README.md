@@ -1,8 +1,12 @@
 # Crafty - A Laravel Artisan and Generator GUI (LAGG)
 
-This tool is meant to offer an easy to use GUI for all those users who don't want to remember all commands or retype them every time. Please note that it's only been developed for a few days, it's still not full-featured.
+v. 1.0
+
+This tool is meant to offer an easy to use GUI for all those users who don't want to remember all commands or retype them every time. 
 
 I myself am a Windows user and many of the productivity tools you have in a Mac OS environment are simply not available to me, typing out long hard to remember commands each time is not ideal so I created this "fancy" tool to help me fast-click through menial repetitive tasks.
+
+*Keep an eye on this repo, I will be adding new features for the next couple of weeks.*
 
 ## Requirements
 
@@ -42,6 +46,7 @@ To remove the bundle just undo the steps 2 and 3 above (delete the bundle (/lara
 ## Usage
 
 1. Navigate to http://yourlaravelhost.dev/crafty
+2. Each of the headings describes a group of controls, if you have JavaScript enabled you need to click on them.
 2. Use the buttons, should be self-explanatory
 
 *More info Soon*
@@ -55,3 +60,9 @@ In case you are running on *nix systems (including MacOS) you'll need to make su
 If the GUI still won't execute the command line commands please make sure that in your php.ini file "safe_mode" is set to false.
 
 **Warning!** Only leave this bundle enabled in a development environment remove it in production! 
+
+## Collaborating
+
+If you would like a new feature or have found a bug please leave an issue on Github for me to follow up on.
+
+If you'd like to actively contribute please follow the Laravel guidelines for collaboration on Github

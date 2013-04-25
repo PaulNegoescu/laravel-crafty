@@ -3,86 +3,31 @@
 @section('content')
 	<form action="" method="post" class="span6">
 		<input type="hidden" name="prevCommands" value="{{ htmlentities(json_encode($prevCommands)) }}" />
-		<fieldset>
-			<legend><h2>Artisan</h2></legend>
-			<h3>Generic / Config</h3>
+		<h1>Crafty - A Laravel Artisan and Generator GUI</h1>
+		<h2>Generic / Config</h2>
+		<div>
+			@include("laravel-crafty::commands.generic")
+		</div>
 
-			<button type="submit" name="submit" value="help:commands" class="btn btn-info">Help:Commands</button>
-			<div class="btn-group">
-				<button type="submit" name="submit" value="key:generate" class="btn btn-success">Key:Generate</button>
-				<button type="submit" name="submit" value="session:table" class="btn btn-inverse">Session:Table</button>
-			</div>
+		<h2>Migrations</h2>
+		<div>
+			@include("laravel-crafty::commands.migrations")
+		</div>
 
+		<h2>Bundles</h2>
+		<div>
+			@include("laravel-crafty::commands.bundles")
+		</div>
 
-			<h3>Migrations</h3>
+		<h2>Unit Tests</h2>
+		<div>
+			@include("laravel-crafty::commands.tests")
+		</div>
 
-			<div class="row-fluid">
-				<button type="submit" name="submit" value="migrate:install" class="btn btn-info">Install</button>
-			</div>
-			<div class="well well-small row-fluid span6">
-				<div class="span6">
-					@foreach($migrateParams as $param => $values)
-						<label class="radio">
-							{{ Form::radio('migrateParams', (string)$param, $values[1]) }}
-							{{ $values[0] }}
-						</label>
-					@endforeach
-				</div>
-				<div class="span6">
-					<button type="submit" name="submit" value="migrate" class="btn btn-success">Migrate</button>
-				</div>
-			</div>
-			<div class="btn-group row-fluid">
-				<button type="submit" name="submit" value="migrate:rollback" class="btn btn-warning">Rollback</button>
-				<button type="submit" name="submit" value="migrate:rebuild" class="btn btn-danger">Rebuild</button>
-				<button type="submit" name="submit" value="migrate:reset" class="btn btn-danger">Reset</button>
-			</div>
-			<div class="input-prepend row-fluid">
-				<button type="submit" name="submit" value="migrate:make" class="btn btn-success">Make</button>
-				{{ Form::text('migrate:makeParams', Input::old('migrate:makeParams'), array('placeholder' => 'Migration Name')) }}
-			</div>
-
-
-			<h3>Bundles</h3>
-
-			<div class="row-fluid well well-small span6">
-				@foreach($bundleCmd as $cmd => $values)
-					<label class="radio">
-						{{ Form::radio('bundleCmd', $cmd, $values[1]) }}
-						{{ $values[0] }}
-					</label>
-				@endforeach
-			</div>
-			<div class="input-prepend row-fluid">
-				<button type="submit" name="submit" value="bundle" class="btn btn-success">Bundle</button>
-				{{ Form::text('bundleParams', Input::old('bundleParams'), array('placeholder' => 'Bundle Name')) }}
-			<div>
-
-			<h3>Unit Tests</h3>
-
-			<div class="input-prepend row-fluid">
-				<button type="submit" name="submit" value="test" class="btn btn-success">Test</button>
-				{{ Form::text('testParams', Input::old('testParams'), array('placeholder' => 'Bundle Name')) }}
-			<div>
-			
-		</fieldset>
-
-		<fieldset>
-			<legend><h2>Generator</h2></legend>
-			<h3>Resources</h3>
-			<div class="row-fluid well well-small span6">
-				@foreach($generateCmd as $cmd => $values)
-					<label class="radio">
-						{{ Form::radio('generateCmd', $cmd, $values[1]) }}
-						{{ $values[0] }}
-					</label>
-				@endforeach
-			</div>
-			<div class="input-prepend row-fluid">
-				<button type="submit" name="submit" value="generate" class="btn btn-success">Generate</button>
-				{{ Form::text('generateParams', Input::old('generateParams'), array('placeholder' => 'Generate Parameters')) }}
-			<div>
-		</fieldset>
+		<h2>Generator</h2>
+		<div>
+			@include("laravel-crafty::commands.generator")
+		</div>	
 	</form>
 	<div class="results span6">
 		@foreach ($prevCommands as $command)

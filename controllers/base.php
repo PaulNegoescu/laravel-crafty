@@ -24,7 +24,9 @@ class Laravel_Crafty_Base_Controller extends Base_Controller {
 			'controller' => array('Controller', false),
 			'model'      => array('Model', false),
 			'migration'  => array('Migration', false),
-			'view'       => array('View', false)
+			'view'       => array('View', false),
+			'assets'     => array('Assets', false),
+			'test'       => array('Test', false),
 		);
 		$whichCmd = (string)Input::old("generateCmd");
 		empty($whichCmd) ? $whichCmd = 'resource' : '';
