@@ -26,7 +26,6 @@
 				//if the current index already exists in the array we remove it
 				console.log("We have it already: ", ""+currentIndex);
 				LC.toggledHeadings.splice(LC.toggledHeadings.indexOf(""+currentIndex), 1);
-				console.warn(LC.toggledHeadings, currentIndex, LC.toggledHeadings.indexOf(""+currentIndex));
 			}
 
 			//we save the new state to the session
