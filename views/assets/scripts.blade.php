@@ -7,7 +7,7 @@
 	if (LC.toggledHeadings) {
 		LC.toggledHeadings = LC.toggledHeadings.split(";");
 	} else {
-		LC.toggledHeadings = [0];
+		LC.toggledHeadings = ["0"];
 	}
 	console.log(LC.toggledHeadings);
 
@@ -19,9 +19,9 @@
 				$this = $(this);
 
 			if ($.inArray(""+currentIndex, LC.toggledHeadings) == -1) {
-				console.log("It's new but will we add it?", ""+currentIndex);
+				console.log("It's new:", ""+currentIndex);
 				//if the current index is not in the array we make sure to add it
-				LC.toggledHeadings.push(currentIndex);
+				LC.toggledHeadings.push(""+currentIndex);
 			} else {
 				//if the current index already exists in the array we remove it
 				console.log("We have it already: ", ""+currentIndex);
@@ -43,6 +43,9 @@
 	 */
 	LC.headings.next().hide();
 	
+	/**
+	 * Revealing all necessary content divs
+	 */
 	for(var i = 0; i < LC.toggledHeadings.length; i++) {
 		LC.headings.eq(LC.toggledHeadings[i])
 			.toggleClass('active')
